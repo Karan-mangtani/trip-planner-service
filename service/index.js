@@ -27,9 +27,9 @@ module.exports = {
     },
     getCityNames: (req) => {
         return new Promise((resolve, reject) => {
-            utils.readCitiesjson('cityNames.json')
+            readCitiesjson('cities.json')
                 .then(cities => {
-                    resolve(cities)
+                    resolve(cities.map(({id, name, location}) =>({id, name, location})))
                 })
                 .catch(err => {
                     reject(err)
